@@ -21,6 +21,7 @@ class DevisController extends Controller
             'email' => 'required|email|max:255',
             'motif' => 'required|string|max:255',
             'message' => 'required|string',
+            'societe'=> 'nullable|string|max:255',
         ]);
 
         Devis::create($validated);

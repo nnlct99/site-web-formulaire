@@ -1,4 +1,15 @@
 @extends('layouts.app')
+<script type="text/javascript">
+    
+function visible()
+{
+document.getElementById("d").style.display="block";
+}
+
+function invisible(){
+    document.getElementById("d").style.display="none";
+}
+</script>
 
 @section('content')
 <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
@@ -40,6 +51,21 @@
             <label class="block font-medium">Motif</label>
             <input type="text" name="motif" value="{{ old('motif') }}" class="w-full border rounded p-2">
             @error('motif') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+        </div>
+        <label class="block font-medium">Etes vous une société ?</label>
+  
+        <form>
+
+      <input type="radio" id="yes" name="ask" value="yes" onclick="visible()">
+      <label for="yes">Oui</label>
+      <input type="radio" id="no" name="ask" value="no" onclick="invisible()">
+      <label for="no">Non</label><br>
+
+</form>
+        <div style="display: none;" id="d">
+            <label class="block font-medium">Société</label>
+            <input type="text" name="societe" value="{{ old('societe') }}" class="w-full border rounded p-2">
+            @error('societe') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
