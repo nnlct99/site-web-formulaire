@@ -8,11 +8,12 @@ document.getElementById("d").style.display="block";
 
 function invisible(){
     document.getElementById("d").style.display="none";
+    document.querySelector('input[name="societe"]').value = "";
 }
 </script>
 
 @section('content')
-<div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+<div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
     <h1 class="text-xl font-bold mb-4">Demande de devis</h1>
 
     @if(session('success'))
@@ -48,20 +49,26 @@ function invisible(){
         </div>
 
         <div>
-            <label class="block font-medium">Motif</label>
-            <input type="text" name="motif" value="{{ old('motif') }}" class="w-full border rounded p-2">
+            <label for ="motif" class="block font-medium">Motif</label>
+            <select name="motif" id="motif-select">
+               
+                <option value="motif1">motif1</option>
+                <option value="motif2">motif2</option>
+                 <option value="motif3">motif3</option>
+            </select>
+            <!-- <input type="text" name="motif" value="{{ old('motif') }}" class="w-full border rounded p-2"> -->
             @error('motif') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
         <label class="block font-medium">Etes vous une société ?</label>
   
-        <form>
+
 
       <input type="radio" id="yes" name="ask" value="yes" onclick="visible()">
       <label for="yes">Oui</label>
-      <input type="radio" id="no" name="ask" value="no" onclick="invisible()">
+      <input type="radio" id="no" name="ask" value="no" onclick="invisible()" value="" checked>
       <label for="no">Non</label><br>
 
-</form>
+
         <div style="display: none;" id="d">
             <label class="block font-medium">Société</label>
             <input type="text" name="societe" value="{{ old('societe') }}" class="w-full border rounded p-2">
@@ -74,7 +81,7 @@ function invisible(){
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border">
             Envoyer
         </button>
     </form>
