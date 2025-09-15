@@ -7,7 +7,7 @@
     @if($contacts->isEmpty())
         <p>Aucun message pour le moment.</p>
     @else
-        <table class="table table-striped">
+        <table class="table border">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -17,6 +17,7 @@
                     <th>Message</th>
                     <th>Objet</th>
                     <th>Date</th>
+                    <th>Rendez-vous le :</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                         <td>{{ $c->message }}</td>
                         <td>{{ $c->objet }}</td>
                         <td>{{ $c->created_at->format('d/m/Y H:i') }}</td>
+                        <td>{{ $c->appointment }}</td>
                     </tr>
                 @endforeach
             </tbody>

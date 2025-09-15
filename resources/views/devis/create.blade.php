@@ -51,21 +51,19 @@ function invisible(){
         <div>
             <label for ="motif" class="block font-medium">Motif</label>
             <select name="motif" id="motif-select">
-               
+                
                 <option value="motif1">motif1</option>
                 <option value="motif2">motif2</option>
-                 <option value="motif3">motif3</option>
+                <option value="motif3">motif3</option>
             </select>
             <!-- <input type="text" name="motif" value="{{ old('motif') }}" class="w-full border rounded p-2"> -->
             @error('motif') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
         <label class="block font-medium">Etes vous une société ?</label>
   
-
-
       <input type="radio" id="yes" name="ask" value="yes" onclick="visible()">
       <label for="yes">Oui</label>
-      <input type="radio" id="no" name="ask" value="no" onclick="invisible()" value="" checked>
+      <input type="radio" id="no" name="ask" value="no" onclick="invisible()" checked>
       <label for="no">Non</label><br>
 
 
