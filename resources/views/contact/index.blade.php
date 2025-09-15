@@ -66,6 +66,6 @@ function invisible(){
 
         <button type="submit" class="btn rounded border">Envoyer</button>
     </form>
-    
+
 </div>
 @endsection
