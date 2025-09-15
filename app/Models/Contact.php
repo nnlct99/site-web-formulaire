@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Devis extends Model
+class Contact extends Model
 {
     protected $fillable = [
         'nom',
         'prenom',
         'telephone' ,
         'email',
-        'motif',
+        'objet',
         'message',
-        'societe',
+        'appointment'
     ];
 }

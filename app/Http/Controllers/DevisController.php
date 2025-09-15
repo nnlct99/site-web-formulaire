@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Devis;
 use Illuminate\Http\Request;
 
-class DevisController extends Controller
+ class DevisController extends Controller
 {
     public function create()
     {
@@ -21,10 +21,21 @@ class DevisController extends Controller
             'email' => 'required|email|max:255',
             'motif' => 'required|string|max:255',
             'message' => 'required|string',
+            'societe'=> 'nullable|string|max:255',
         ]);
 
         Devis::create($validated);
 
         return redirect()->back()->with('success', 'Votre demande de devis a bien été envoyée.');
     }
+
+    public function index()
+    {
+        // Récupère tous les devis
+        $devis = Devis::all();
+
+        // Envoie à la vue "dashboard"
+        return view('devis.dashboard', compact('devis'));
+    }
+    
 }
