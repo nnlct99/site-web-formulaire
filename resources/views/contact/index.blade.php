@@ -13,7 +13,7 @@ function invisible(){
 </script>
 @section('content')
 <div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
-    <h1>Page de Contact</h1>
+   
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -64,7 +64,7 @@ function invisible(){
             <input type="datetime-local" name="appointment" min="2025-01-01T00:00" max="2050-01-01T00:00" />>
         </div>
 
-        <button type="submit" class="btn rounded border">Envoyer</button>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-black rounded border">Envoyer</button>
     </form>
 
 </div>

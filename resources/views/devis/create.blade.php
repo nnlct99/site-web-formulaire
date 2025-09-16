@@ -10,7 +10,7 @@ function invisible(){
     document.getElementById("d").style.display="none";
     document.querySelector('input[name="societe"]').value = "";
 }
-</script>
+</script>   
 
 @section('content')
 <!-- <img src="/couvreurs1.jpg"> -->
@@ -80,7 +80,7 @@ function invisible(){
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-black rounded border">
             Envoyer
         </button>
     </form>
