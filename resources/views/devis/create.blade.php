@@ -13,6 +13,7 @@ function invisible(){
 </script>
 
 @section('content')
+<!-- <img src="/couvreurs1.jpg"> -->
 <div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
     <h1 class="text-xl font-bold mb-4">Demande de devis</h1>
 
