@@ -7,7 +7,7 @@
     @if($devis->isEmpty())
         <p>Aucun devis enregistré.</p>
     @else
-        <table class="table table-bordered">
+        <table class="table border">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -36,5 +36,6 @@
             </tbody>
         </table>
     @endif
+
 </div>
 @endsection
