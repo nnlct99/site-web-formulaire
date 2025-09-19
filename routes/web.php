@@ -17,7 +17,7 @@ Route::get('/contact-dashboard', [ContactController::class, 'index'])->name('con
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [DevisController::class, 'store'])->name('contact.store');
 
-
+// Route::resource('contact', ContactController::class);
 
 use Illuminate\Support\Facades\Route;
 
@@ -33,15 +33,21 @@ Route::get('/', function () {
 Route::get('/devis/create', [DevisController::class, 'create'])->name('devis.create');
 Route::post('/devis', [DevisController::class, 'store'])->name('devis.store');
 
+Route::delete('/devis/{id}', [DevisController::class, 'destroy'])->name('devis.destroy');
+
+Route::get('/devis/{id}/pdf', [DevisController::class, 'generatePdf'])->name('devis.pdf');
+
 // Tableau de bord devis
 Route::get('/devis-dashboard', [DevisController::class, 'index'])->name('devis.dashboard');
 
-// ----------------- CONTACT -----------------
-Route::get('/contact', [ContactController::class, 'create'])->name('contact.form');  
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');  
+
+
 
 // Tableau de bord contact
 Route::get('/contact-dashboard', [ContactController::class, 'index'])->name('contact.dashboard');
+// routes/web.php
+
+
 
 // ----------------- DASHBOARD GLOBAL -----------------
 Route::get('/dashboard', [DevisController::class, 'index'])->name('dashboard');

@@ -51,7 +51,7 @@ function invisible(){
 
         <div>
             <label for ="motif" class="block font-medium">Motif</label>
-            <select name="motif" id="motif-select">
+            <select name="motif" id="motif-select" class="rounded border">
                 
                 <option value="motif1">motif1</option>
                 <option value="motif2">motif2</option>

@@ -11,7 +11,6 @@
 </head>
 <body>
 
- -->
 
     <div class="container mx-auto mt-8">
         <!--blade contenu des pages-->
