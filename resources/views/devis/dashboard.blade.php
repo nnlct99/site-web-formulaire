@@ -72,6 +72,8 @@
     @endif
 </div>
 
+
+
 <!-- Modal pour afficher le devis en détail -->
 <div id="devisModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">

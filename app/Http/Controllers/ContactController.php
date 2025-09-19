@@ -34,11 +34,13 @@ class ContactController extends Controller
         $contacts = Contact::latest()->get();
         return view('contact.dashboard', compact('contacts'));
     }
-    // public function destroy($id)
-    // {
-    //     $contacts = Contact::findOrFail($id);
-    //     $contacts->delete();
-    //     return redirect()->route('contact.index')->with('success', 'Message supprimé');
-    // }
+
+     public function destroy($id)
+{
+    $devis = Devis::findOrFail($id);
+    $devis->delete();
+    
+    return redirect()->back()->with('success', 'Devis supprimé avec succès !');
+}
 
 }

@@ -53,7 +53,6 @@ use Illuminate\Http\Request;
     return redirect()->back()->with('success', 'Devis supprimé avec succès !');
 }
 
-//a reparer !
 
 public function generatePdf($id)
 {

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+<!-- 
+Faire un bouton supprimer
+Faire un mail:to -->
+
+
 @section('content')
 <div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-6">📩 Messages reçus (Contact)</h1>
@@ -42,6 +47,8 @@
                                     <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-500 rounded">-</span>
                                 @endif
                             </td>
+                        
+
                         </tr>
                     @endforeach
                 </tbody>
