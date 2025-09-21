@@ -10,9 +10,10 @@ function invisible(){
     document.getElementById("d").style.display="none";
     document.querySelector('input[name="societe"]').value = "";
 }
-</script>
+</script>   
 
 @section('content')
+<!-- <img src="/couvreurs1.jpg"> -->
 <div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
     <h1 class="text-xl font-bold mb-4">Demande de devis</h1>
 
@@ -50,7 +51,7 @@ function invisible(){
 
         <div>
             <label for ="motif" class="block font-medium">Motif</label>
-            <select name="motif" id="motif-select">
+            <select name="motif" id="motif-select" class="rounded border">
                 
                 <option value="motif1">motif1</option>
                 <option value="motif2">motif2</option>
@@ -79,9 +80,10 @@ function invisible(){
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-black rounded border">
             Envoyer
         </button>
     </form>
+
 </div>
 @endsection

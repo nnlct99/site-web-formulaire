@@ -13,7 +13,7 @@ function invisible(){
 </script>
 @section('content')
 <div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
-    <h1>Page de Contact</h1>
+   
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -51,21 +51,25 @@ function invisible(){
             <textarea name="message" rows="4" class="w-full border rounded p-2" required></textarea>
              @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
+        <div class="mb-5">
         <label class="block font-medium">Prendre rendez-vous ?</label>
   
       <input type="radio" id="yes" name="ask" value="yes" onclick="visible()">
       <label for="yes">Oui</label>
       <input type="radio" id="no" name="ask" value="no" onclick="invisible()" checked>
       <label for="no">Non</label><br>
-
+        </div>
     <input type="hidden" id="timezone" name="timezone" value="+02:00" />
 
-        <div style="display: none;" id="d">
-            <input type="datetime-local" name="appointment" min="2025-01-01T00:00" max="2050-01-01T00:00" />>
+        <div style="display: none" id="d">
+            <input type="datetime-local" name="appointment" min="2025-01-01T00:00" max="2050-01-01T00:00" class="mb-5 border rounded"/>
         </div>
 
-        <button type="submit" class="btn rounded border">Envoyer</button>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 cursor-pointer hover:bg-white hover:text-black rounded border">Envoyer</button>
     </form>
-    
+
 </div>
+
+  <a href="/contact-dashboard">->contact dashboard-<</a>
+  
 @endsection
