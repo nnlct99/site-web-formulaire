@@ -69,4 +69,7 @@ function invisible(){
     </form>
 
 </div>
+
+  <a href="/contact-dashboard">->contact dashboard-<</a>
+  
 @endsection

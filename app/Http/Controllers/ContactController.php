@@ -37,10 +37,10 @@ class ContactController extends Controller
 
      public function destroy($id)
 {
-    $devis = Devis::findOrFail($id);
-    $devis->delete();
+    $contactdelete = Contact::findOrFail($id);
+    $contactdelete->delete();
     
-    return redirect()->back()->with('success', 'Devis supprimé avec succès !');
+    return redirect()->back()->with('success', 'Message supprimé avec succès !');
 }
 
 }

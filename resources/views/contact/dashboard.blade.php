@@ -26,6 +26,7 @@ Faire un mail:to -->
                         <th class="px-6 py-3 text-left">Objet</th>
                         <th class="px-6 py-3 text-left">Date</th>
                         <th class="px-6 py-3 text-left">Rendez-vous</th>
+                        <th class="px-6 py-3 text-left">X</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -33,27 +34,48 @@ Faire un mail:to -->
                         <tr class="hover:bg-gray-50 transition">
                             <td class="px-6 py-4">{{ $c->nom }}</td>
                             <td class="px-6 py-4">{{ $c->prenom }}</td>
-                            <td class="px-6 py-4">{{ $c->email }}</td>
+                            <td class="px-6 py-4">
+                            <a href="mailto:{{ $c->email }}" class="text-blue-600 hover:underline">
+                                {{ $c->email }}
+                            </a>
+                        </td>
                             <td class="px-6 py-4">{{ $c->telephone ?? '-' }}</td>
                             <td class="px-6 py-4">{{ $c->message }}</td>
                             <td class="px-6 py-4">{{ $c->objet }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $c->created_at->format('d/m/Y H:i') }}</td>
                             <td class="px-6 py-4">
-                                @if($c->appointment)
-                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded">
-                                        {{ $c->appointment }}
-                                    </span>
-                                @else
-                                    <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-500 rounded">-</span>
-                                @endif
-                            </td>
-                        
+                              @if($c->appointment)
+                                <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded">
+                                    {{ \Carbon\Carbon::parse($c->appointment)->format('d/m/Y H:i') }}
+                                </span>
+                            @else
+                                <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-500 rounded">-</span>
+                            @endif
 
+                            </td>
+                         <!-- Bouton Supprimer -->
+                          <td>
+                                    <form action="{{ route('contact.destroy', $c->id) }}" method="POST" class="inline-block" 
+                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce devis ?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" 
+                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
+                                                title="Supprimer le devis">
+                                            🗑️ Supprimer
+                                        </button>
+                                    </form>
+                        </td>
                         </tr>
+                       
                     @endforeach
                 </tbody>
             </table>
         </div>
+
+       
     @endif
 </div>
+
+<a href="/contact">/contact</a>
 @endsection

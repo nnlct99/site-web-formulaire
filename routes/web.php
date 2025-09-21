@@ -13,11 +13,11 @@ Route::get('/', function () {
 
 
 // ----------------- DEVIS -----------------
-Route::get('/devis/create', [DevisController::class, 'create'])->name('devis.create');
+
 Route::post('/devis', [DevisController::class, 'store'])->name('devis.store');
 
-// Route::get('/devis', [DevisController::class, 'create'])->name('devis.create');
-// Route::post('/devis', [DevisController::class, 'store'])->name('devis.store');
+ Route::get('/devis', [DevisController::class, 'create'])->name('devis.create');
+
 
 Route::delete('/devis/{id}', [DevisController::class, 'destroy'])->name('devis.destroy');
 
@@ -30,6 +30,8 @@ Route::get('/devis-dashboard', [DevisController::class, 'index'])->name('devis.d
 Route::get('/contact-dashboard', [ContactController::class, 'index'])->name('contact.dashboard');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+
+
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.form');  
 
