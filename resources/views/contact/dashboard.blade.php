@@ -26,7 +26,7 @@ Faire un mail:to -->
                         <th class="px-6 py-3 text-left">Objet</th>
                         <th class="px-6 py-3 text-left">Date</th>
                         <th class="px-6 py-3 text-left">Rendez-vous</th>
-                        <th class="px-6 py-3 text-left">X</th>
+                        <th class="px-6 py-3 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -40,7 +40,11 @@ Faire un mail:to -->
                             </a>
                         </td>
                             <td class="px-6 py-4">{{ $c->telephone ?? '-' }}</td>
-                            <td class="px-6 py-4">{{ $c->message }}</td>
+                            <td class="px-6 py-4 max-w-xs truncate">
+                            <div class="whitespace-pre-wrap break-words text-gray-800">
+                                {{ $c->message }}
+                            </div>
+                            </td>
                             <td class="px-6 py-4">{{ $c->objet }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $c->created_at->format('d/m/Y H:i') }}</td>
                             <td class="px-6 py-4">
@@ -65,6 +69,12 @@ Faire un mail:to -->
                                             🗑️ Supprimer
                                         </button>
                                     </form>
+                        
+                     
+                            <a href="mailto:{{ $c->email }}" 
+                                   class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded font-medium text-sm">
+                                    📧 Répondre
+                                </a>
                         </td>
                         </tr>
                        

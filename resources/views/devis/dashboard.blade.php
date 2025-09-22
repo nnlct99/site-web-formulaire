@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container mx-auto px-4">
+
+
     <h1 class="text-2xl font-bold mb-6">📊 Tableau de bord - Liste des devis</h1>
 
     @if($devis->isEmpty())
@@ -30,19 +32,26 @@
                             <td class="px-6 py-4">{{ $d->nom }}</td>
                             <td class="px-6 py-4">{{ $d->prenom }}</td>
                             <td class="px-6 py-4">{{ $d->telephone }}</td>
-                            <td class="px-6 py-4">{{ $d->email }}</td>
+                            <td class="px-6 py-4"><a href="mailto:{{ $d->email }}" class="text-blue-600 hover:underline">
+                                {{ $d->email }}
+                            </a></td>
                             <td class="px-6 py-4">{{ $d->motif }}</td>
-                            <td class="px-6 py-4">{{ $d->message }}</td>
+                            
+                            <td class="px-6 py-4 max-w-xs truncate">
+                            <div class="whitespace-pre-wrap break-words text-gray-800">
+                                {{ $d->message }}
+                            </div>
+                            </td>
                             <td class="px-6 py-4">{{ $d->societe ?? '-' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $d->created_at->format('d/m/Y H:i') }}</td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-2">
                                     <!-- Bouton Voir -->
                                     <button onclick="showDevisModal({{ json_encode($d) }})" 
-                                            class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
+                                            class="bg-green-500 hover:cursor-pointer hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
                                             title="Voir le devis en détail">
                                         👁️ Voir
-                                    </button>
+                                    </button>   
                                     
                                     <!-- Bouton Télécharger PDF -->
                                     <a href="{{ route('devis.pdf', $d->id) }}" 
@@ -57,7 +66,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" 
-                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
+                                                class="bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
                                                 title="Supprimer le devis">
                                             🗑️ Supprimer
                                         </button>
@@ -69,6 +78,7 @@
                 </tbody>
             </table>
         </div>
+
     @endif
 </div>
 

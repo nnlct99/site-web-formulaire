@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Devis;
 use Illuminate\Http\Request;
-    use Barryvdh\DomPDF\Facade\Pdf;
 
- class DevisController extends Controller
+class DevisController extends Controller
 {
     public function create()
     {
@@ -27,17 +26,18 @@ use Illuminate\Http\Request;
 
         Devis::create($validated);
 
-        return redirect()->back()->with('success', 'Votre demande de devis a bien été envoyée.');
+        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
     }
 
     public function index()
     {
-        // Récupère tous les devis
-        $devis = Devis::all();
+        // Récupère tous les devis avec pagination (10 par page)
+        $devis = Devis::latest()->paginate(10);
 
         // Envoie à la vue "dashboard"
         return view('devis.dashboard', compact('devis'));
     }
+
     
 //     public function show($id)
 // {
