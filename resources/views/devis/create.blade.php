@@ -14,7 +14,7 @@ function invisible(){
 
 @section('content')
 <!-- <img src="/couvreurs1.jpg"> -->
-<div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
+<div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
     <h1 class="text-xl font-bold mb-4">Demande de devis</h1>
 
     @if(session('success'))
@@ -26,13 +26,13 @@ function invisible(){
     <form action="{{ route('devis.store') }}" method="POST" class="space-y-4">
         @csrf
         <div>
-            <label class="block font-medium">Nom</label>
+            <label class="shadow-md font-medium">Nom</label>
             <input type="text" name="nom" value="{{ old('nom') }}" class="w-full border rounded p-2" required>
             @error('nom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
-            <label class="block font-medium">Prénom</label>
+            <label class="shadow-md font-medium">Prénom</label>
             <input type="text" name="prenom" value="{{ old('prenom') }}" class="w-full border rounded p-2" required>
             @error('prenom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
@@ -84,6 +84,7 @@ function invisible(){
             Envoyer
         </button>
     </form>
-
+    <br>
+<a href ="/devis-dashboard">Devis-dashboard</a>
 </div>
 @endsection

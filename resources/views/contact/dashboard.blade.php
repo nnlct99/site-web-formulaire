@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-<!-- 
-Faire un bouton supprimer
-Faire un mail:to -->
-
-
 @section('content')
 <div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-6">📩 Messages reçus (Contact)</h1>
@@ -15,7 +10,7 @@ Faire un mail:to -->
         </div>
     @else
         <div class="overflow-x-auto bg-white rounded-lg shadow-md">
-            <table class="min-w-full border-collapse">
+            <table class="min-w-full border-collapse mt-5">
                 <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
                     <tr>
                         <th class="px-6 py-3 text-left">Nom</th>
@@ -61,7 +56,7 @@ Faire un mail:to -->
                           <td class="px-6 py-4">
                               <!-- Bouton Répondre-->
                             <a href="mailto:{{ $c->email }}" 
-                                   class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded font-medium text-sm mr-2">
+                                   class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded font-medium text-sm mr-2 transition-colors duration-200">
                                     📧 Répondre
                                 </a>
                             <!-- Bouton Supprimer -->
@@ -74,14 +69,11 @@ Faire un mail:to -->
                                                 title="Supprimer le message">
                                             🗑️ Supprimer
                                         </button>
-                                    </form>
-                        
+                                    </form>                    
                       
                         </td>
                         </tr>
-                        
-
-                       
+                                           
                     @endforeach
                 </tbody>
             </table>
