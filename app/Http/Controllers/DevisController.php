@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Devis;
 use Illuminate\Http\Request;
 
- class DevisController extends Controller
+class DevisController extends Controller
 {
     public function create()
     {
@@ -26,16 +26,42 @@ use Illuminate\Http\Request;
 
         Devis::create($validated);
 
-        return redirect()->back()->with('success', 'Votre demande de devis a bien été envoyée.');
+        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
     }
 
     public function index()
     {
-        // Récupère tous les devis
-        $devis = Devis::all();
+        // Récupère tous les devis avec pagination (10 par page)
+        $devis = Devis::latest()->paginate(10);
 
         // Envoie à la vue "dashboard"
         return view('devis.dashboard', compact('devis'));
     }
+
     
+//     public function show($id)
+// {
+//     $devis = Devis::findOrFail($id);
+//     return view('devis.show', compact('devis'));
+// }
+
+    public function destroy($id)
+{
+    $devis = Devis::findOrFail($id);
+    $devis->delete();
+    
+    return redirect()->back()->with('success', 'Devis supprimé avec succès !');
+}
+
+
+public function generatePdf($id)
+{
+    $devis = Devis::findOrFail($id);
+    
+    $pdf = Pdf::loadView('devis.pdf', compact('devis'));
+    
+    return $pdf->download('devis_' . $devis->nom . '_' . $devis->prenom . '.pdf');
+}
+
+
 }

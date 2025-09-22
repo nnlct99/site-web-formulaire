@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <title>Anne Couverture</title>
    
     <link rel="stylesheet" href="https://tailwindcss.com/plus-assets/build/assets/app-B1zPckLa.css"/>
     <link rel="stylesheet" href="/resources/css/app.css"/>
@@ -14,7 +14,7 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="" class="h-8" alt="Logo" />
+            <img src="{{ asset('images/logo1.png')}}" class="h-8" alt="Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Anne Couverture</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -45,11 +45,19 @@
     </div>
 </nav>
   
-
+<!--hero
+services
+-->
     <div class="container mx-auto mt-8">
         <!--blade contenu des pages-->
         @yield('content')
-    </div>
+    
+    <a href="/devis">/devis</a><br>
+    <a href="/devis-dashboard">/devis-dashboard</a><br>
+    <a href="/contact">/contact</a><br>
+    <a href="/contact-dashboard">/contact-dashboard</a>
+    
+    
 
    <header>
 
@@ -61,7 +69,30 @@
 
     <!--footer-->
 
-   </footer>
+    
+
+<footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="#" class="hover:underline">Anne Couverture</a>. Tout droits reservés <!-- ? -->
+    </span>
+    <!-- A checker .... -->
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">A propos</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Mentions légales</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Plan du site</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+    </div>
+</footer>
+
         
 </body>
 </html>
