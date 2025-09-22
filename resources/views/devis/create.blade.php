@@ -27,25 +27,25 @@ function invisible(){
         @csrf
         <div>
             <label class="block font-medium">Nom</label>
-            <input type="text" name="nom" value="{{ old('nom') }}" class="w-full border rounded p-2">
+            <input type="text" name="nom" value="{{ old('nom') }}" class="w-full border rounded p-2" required>
             @error('nom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Prénom</label>
-            <input type="text" name="prenom" value="{{ old('prenom') }}" class="w-full border rounded p-2">
+            <input type="text" name="prenom" value="{{ old('prenom') }}" class="w-full border rounded p-2" required>
             @error('prenom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Téléphone</label>
-            <input type="text" name="telephone" value="{{ old('telephone') }}" class="w-full border rounded p-2">
+            <input type="text" name="telephone" value="{{ old('telephone') }}" class="w-full border rounded p-2" required>
             @error('telephone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded p-2">
+            <input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded p-2" required>
             @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
@@ -76,7 +76,7 @@ function invisible(){
 
         <div>
             <label class="block font-medium">Message</label>
-            <textarea name="message" rows="5" class="w-full border rounded p-2">{{ old('message') }}</textarea>
+            <textarea name="message" rows="5" class="w-full border rounded p-2" required>{{ old('message') }}</textarea>
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 

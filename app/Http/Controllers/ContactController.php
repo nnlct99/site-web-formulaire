@@ -23,10 +23,15 @@ class ContactController extends Controller
             'message' => 'required|string',
             'appointment'=>'nullable|date'
         ]);
+        
 
         Contact::create($validated);
 
         return redirect()->back()->with('success', 'Votre message a bien été envoyé.');
+         $rdv = new DateTime($request->input('rdv'));
+    
+        return back()->with('success', '✅ Rendez-vous enregistré pour : ' . $rdv->format('d/m/Y H:i'));
+    
     }
 
     public function index()
