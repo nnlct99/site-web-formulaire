@@ -79,6 +79,11 @@
             </table>
         </div>
 
+        <!-- Pagination flottante -->
+        <div id="floatingPagination" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-white shadow-lg rounded-full px-4 py-2 flex space-x-2">
+            {{ $devis->links('pagination::tailwind') }}
+        </div>
+
     @endif
 </div>
 
@@ -129,14 +134,14 @@
                 
                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
                     <span class="font-semibold text-blue-800">Message :</span>
-                    <p id="modal-message" class="text-blue-900 mt-2 whitespace-pre-wrap leading-relaxed"></p>
+                    <p id="modal-message" class="text-blue-900 mt-2 whitespace-pre-wrap break-words leading-relaxed"></p>      
                 </div>
             </div>
             
             <!-- Footer du modal -->
-            <div class="mt-6 pt-4 border-t flex justify-end">
+            <div class="mt-6 pt-4 border-t flex justify-end ">
                 <button onclick="closeDevisModal()" 
-                        class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md font-medium transition-colors">
+                        class="bg-blue-500 hover:cursor-pointer hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium transition-colors ">
                     Fermer
                 </button>
             </div>
