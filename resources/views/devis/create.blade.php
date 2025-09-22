@@ -80,7 +80,7 @@ function invisible(){
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
-         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border hover:bg-blue-700 hover:cursor-pointer">
+         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border hover:bg-blue-700 hover:cursor-pointer transition-colors duration-200">
             Envoyer
         </button>
     </form>

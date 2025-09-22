@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 @section('content')
 <div class="max-w-lg mx-auto bg-white shadow-md border rounded-lg p-6">
-    <h1 class="text-xl font-bold mb-4">Page de Contact</h1>
+    <h1 class="text-xl font-bold mb-4">Prise de Contact & Rendez-vous</h1>
 
     @if(session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <small class="text-gray-600 text-sm">Veuillez sélectionner une date et heure futures (minimum 1h à l'avance)</small>
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border hover:bg-blue-700 hover:cursor-pointer">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border hover:bg-blue-700 hover:cursor-pointer transition-colors duration-200">
             Envoyer
         </button>
     </form>

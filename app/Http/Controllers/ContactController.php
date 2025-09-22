@@ -57,5 +57,14 @@ class ContactController extends Controller
         $contacts = Contact::latest()->paginate(10); // 10 messages par page
         return view('contact.dashboard', compact('contacts'));
     }
+    public function destroy($id)
+        {
+        $contactdelete = Contact::findOrFail($id);
+        $contactdelete->delete();
+        
+        return redirect()->back()->with('success', 'Message supprimé avec succès !');
+        }
+
+
 
 }
