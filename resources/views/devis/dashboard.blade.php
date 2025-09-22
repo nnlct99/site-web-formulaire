@@ -11,8 +11,8 @@
             <p class="text-yellow-700 font-medium">⚠ Aucun devis enregistré.</p>
         </div>
     @else
-        <div class="overflow-x-auto bg-white rounded-lg shadow-md">
-            <table class="min-w-full border-collapse">
+        <div class="overflow-x-auto bg-white rounded-lg shadow-md ">
+            <table class="min-w-full border-collapse mt-5">
                 <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
                     <tr>
                         <th class="px-6 py-3 text-left">Nom</th>

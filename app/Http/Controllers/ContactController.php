@@ -52,6 +52,10 @@ class ContactController extends Controller
 
         return redirect()->back()->with('success', $message);
     }
+
+
+    //dashboard controller
+
     public function index()
     {
         $contacts = Contact::latest()->paginate(10); // 10 messages par page

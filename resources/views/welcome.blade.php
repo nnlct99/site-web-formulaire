@@ -4,95 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anne Couverture</title>
-   
-    <link rel="stylesheet" href="https://tailwindcss.com/plus-assets/build/assets/app-B1zPckLa.css"/>
-    <link rel="stylesheet" href="/resources/css/app.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-sans text-gray-800">
 
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{ asset('images/logo1.png')}}" class="h-8" alt="Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Anne Couverture</span>
-        </a>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <!-- <li>
-            <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-            </li> -->
-            <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">A propos</a> <!--Notre entreprise ?-->   <!--hover:overline-->
-            </li>
-            <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Créations</a>
-            </li>
-            <li>
-            <a href="/devis" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Devis & services</a>
-            </li>
-            <li>
-            <a href="/contact" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-            </li>
-        </ul>
+<!-- Navbar -->
+<header class="bg-gray-900 text-white fixed w-full z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <a href="#" class="text-2xl font-bold">Anne Couverture</a>
+        <nav class="space-x-6 hidden md:flex">
+            <a href="#about" class="hover:text-yellow-400 transition">À propos</a>
+            <a href="#creations" class="hover:text-yellow-400 transition">Créations</a>
+            <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+            <a href="#devis" class="hover:text-yellow-400 transition">Devis</a>
+        </nav>
+        <!-- Mobile burger -->
+        <div class="md:hidden">
+            <button id="menuBtn" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
         </div>
     </div>
-</nav>
-  
-<!--hero
-services
--->
-    <div class="container mx-auto mt-8">
-        <!--blade contenu des pages-->
-        @yield('content')
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
+        <a href="#about" class="block py-2 px-6 hover:bg-gray-700">À propos</a>
+        <a href="#creations" class="block py-2 px-6 hover:bg-gray-700">Créations</a>
+        <a href="#contact" class="block py-2 px-6 hover:bg-gray-700">Contact</a>
+        <a href="#devis" class="block py-2 px-6 hover:bg-gray-700">Devis</a>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="h-screen bg-cover bg-center" style=" background-image: url(/images/couvreurs1.jpg);background-repeat:no-repeat; background-position:center center; background-attachment : fixed ">
     
-    <a href="/devis">/devis</a><br>
-    <a href="/devis-dashboard">/devis-dashboard</a><br>
-    <a href="/contact">/contact</a><br>
-    <a href="/contact-dashboard">/contact-dashboard</a>
-    
-    
+    <div class=" h-full flex flex-col justify-center items-center text-center px-4">
+       
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Couvreurs Pro</h1>
+        <p class="text-white text-lg md:text-2xl mb-6">Votre toiture, notre expertise</p>
+        <a href="#devis" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded shadow">Demander un devis</a>
+    </div>
+</section>
 
-   <header>
+<!-- À propos -->
+<section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-0">
+        <h2 class="text-3xl font-bold text-center mb-8">À propos</h2>
+        <p class="max-w-3xl mx-auto text-center text-gray-700 leading-relaxed">
+            Forts de 20 ans d'expérience, nous sommes spécialisés dans tous types de travaux de couverture.
+            Toitures, ardoises, tuiles ou zinc : nous garantissons un travail soigné et durable.
+        </p>
+    </div>
+</section>
 
-    <!--header-->
+<!-- Créations -->
+<section id="creations" class="py-20">
+    <div class="container mx-auto px-6 md:px-0">
+        <h2 class="text-3xl font-bold text-center mb-12">Nos réalisations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 1" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Toiture traditionnelle</h3>
+                    <p class="text-gray-700 text-sm">Rénovation d’une toiture en tuiles avec isolation complète.</p>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 2" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Toiture moderne</h3>
+                    <p class="text-gray-700 text-sm">Installation de toiture en zinc sur maison contemporaine.</p>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 3" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Réparation d’urgence</h3>
+                    <p class="text-gray-700 text-sm">Intervention rapide pour fuite et réparation de charpente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-   </header>
+<!-- Contact -->
+<section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-0 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center mb-8">Contactez-nous</h2>
+        <form class="bg-white shadow-md rounded px-8 py-10 space-y-6">
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Nom</label>
+                <input type="text" placeholder="Votre nom" class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Email</label>
+                <input type="email" placeholder="Votre email" class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Message</label>
+                <textarea placeholder="Votre message" class="w-full border rounded px-3 py-2 h-32"></textarea>
+            </div>
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded shadow">Envoyer</button>
+        </form>
+    <a href="/devis">Un devis ?</a>
 
-   <footer>
+    </div>
 
-    <!--footer-->
+</section>
 
-    
+<!-- Devis -->
+<!-- <section id="devis" class="py-20">
+    <div class="container mx-auto px-6 md:px-0 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center mb-8">Demandez un devis</h2>
+        <form class="bg-white shadow-md rounded px-8 py-10 space-y-6">
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Nom</label>
+                <input type="text" placeholder="Votre nom" class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Email</label>
+                <input type="email" placeholder="Votre email" class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Téléphone</label>
+                <input type="tel" placeholder="Votre téléphone" class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-bold mb-2">Message / détails du projet</label>
+                <textarea placeholder="Votre projet" class="w-full border rounded px-3 py-2 h-32"></textarea>
+            </div>
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded shadow">Envoyer le devis</button>
+        </form>
+    </div>
+</section> -->
 
-<footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
-    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="#" class="hover:underline">Anne Couverture</a>. Tout droits reservés <!-- ? -->
-    </span>
-    <!-- A checker .... -->
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">A propos</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Mentions légales</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Plan du site</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline">Contact</a>
-        </li>
-    </ul>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="container mx-auto px-6 text-center">
+        © 2025 Couvreurs Pro - Tous droits réservés
     </div>
 </footer>
 
-        
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
 </body>
 </html>

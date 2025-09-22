@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Devis;
 use Illuminate\Http\Request;
 
+ use Barryvdh\DomPDF\Facade\Pdf;
+
 class DevisController extends Controller
 {
     public function create()
@@ -40,7 +42,7 @@ class DevisController extends Controller
 
     
 //     public function show($id)
-// {
+// {    
 //     $devis = Devis::findOrFail($id);
 //     return view('devis.show', compact('devis'));
 // }
@@ -57,9 +59,9 @@ class DevisController extends Controller
 public function generatePdf($id)
 {
     $devis = Devis::findOrFail($id);
-    
+
     $pdf = Pdf::loadView('devis.pdf', compact('devis'));
-    
+
     return $pdf->download('devis_' . $devis->nom . '_' . $devis->prenom . '.pdf');
 }
 

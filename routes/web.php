@@ -3,20 +3,20 @@
 
 use App\Http\Controllers\DevisController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home')->name('welcome');
 
 
 // ----------------- DEVIS -----------------
 
 Route::post('/devis', [DevisController::class, 'store'])->name('devis.store');
 
- Route::get('/devis', [DevisController::class, 'create'])->name('devis.create');
+Route::get('/devis', [DevisController::class, 'create'])->name('devis.create');
 
 
 Route::delete('/devis/{id}', [DevisController::class, 'destroy'])->name('devis.destroy');
