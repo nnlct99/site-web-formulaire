@@ -40,12 +40,6 @@ class DevisController extends Controller
         return view('devis.dashboard', compact('devis'));
     }
 
-    
-//     public function show($id)
-// {    
-//     $devis = Devis::findOrFail($id);
-//     return view('devis.show', compact('devis'));
-// }
 
     public function destroy($id)
 {
