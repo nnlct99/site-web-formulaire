@@ -26,7 +26,7 @@ Faire un mail:to -->
                         <th class="px-6 py-3 text-left">Objet</th>
                         <th class="px-6 py-3 text-left">Date</th>
                         <th class="px-6 py-3 text-left">Rendez-vous</th>
-                        <th class="px-6 py-3 text-left">X</th>
+                        <th class="px-6 py-3 text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -40,7 +40,11 @@ Faire un mail:to -->
                             </a>
                         </td>
                             <td class="px-6 py-4">{{ $c->telephone ?? '-' }}</td>
-                            <td class="px-6 py-4">{{ $c->message }}</td>
+                            <td class="px-6 py-4 max-w-xs truncate">
+                            <div class="whitespace-pre-wrap break-words text-gray-800">
+                                {{ $c->message }}
+                            </div>
+                            </td>
                             <td class="px-6 py-4">{{ $c->objet }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $c->created_at->format('d/m/Y H:i') }}</td>
                             <td class="px-6 py-4">
@@ -53,24 +57,38 @@ Faire un mail:to -->
                             @endif
 
                             </td>
-                         <!-- Bouton Supprimer -->
-                          <td>
+                  
+                          <td class="px-6 py-4">
+                              <!-- Bouton Répondre-->
+                            <a href="mailto:{{ $c->email }}" 
+                                   class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded font-medium text-sm mr-2">
+                                    📧 Répondre
+                                </a>
+                            <!-- Bouton Supprimer -->
                                     <form action="{{ route('contact.destroy', $c->id) }}" method="POST" class="inline-block" 
-                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce devis ?')">
+                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" 
-                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-1"
-                                                title="Supprimer le devis">
+                                                class="mt-2 bg-red-500 hover:bg-red-600 hover:cursor-pointer text-white px-3 py-1 rounded-md text-sm font-medium transition-colors duration-200 items-center"
+                                                title="Supprimer le message">
                                             🗑️ Supprimer
                                         </button>
                                     </form>
+                        
+                      
                         </td>
                         </tr>
+                        
+
                        
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <!-- Pagination flottante -->
+        <div id="floatingPagination" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-white shadow-lg rounded-full px-4 py-2 flex space-x-2">
+            {{ $contacts->links('pagination::tailwind') }}
         </div>
 
        
