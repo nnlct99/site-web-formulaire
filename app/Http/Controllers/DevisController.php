@@ -31,6 +31,9 @@ class DevisController extends Controller
         return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
     }
 
+//transferer tout ca
+//
+
     public function index()
     {
         // Récupère tous les devis avec pagination (10 par page)
