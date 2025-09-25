@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
        
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Anne Couverture</h1>
         <p class="text-white text-lg md:text-2xl mb-6">Votre toiture, notre expertise</p>
-        <a href="#devis" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded shadow">Demander un devis</a>
+        <a href="/devis" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded shadow">Demander un devis</a>
     </div>
 </section>
 
