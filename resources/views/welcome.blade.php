@@ -1,44 +1,52 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anne Couverture</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-sans text-gray-800">
+@extends('layouts.app')
 
-<!-- Navbar -->
-  <header class="bg-gray-900 text-white fixed w-full z-50 shadow">
-  <div class="relative container mx-auto flex items-center justify-between py-4 px-6">
+<script type="text/javascript">
+function visible() {
+    document.getElementById("d").style.display = "block";
+    // Mettre à jour la valeur min à chaque fois qu'on affiche le champ
+    updateMinDateTime();
+}
+
+function invisible() {
+    document.getElementById("d").style.display = "none";
+    document.querySelector('input[name="appointment"]').value = "";
+}
+
+function updateMinDateTime() {
+    const now = new Date();
+    // Ajouter 1 heure pour laisser un délai minimum
+    now.setHours(now.getHours() + 1);
     
-    <!-- Logo -->
-    <a href="#"><img src="{{ asset('images/logo1.png')}}" class="h-8" alt="Logo" /></a>
-
-    <!-- Titre centré -->
-    <a href="#" class="absolute left-1/2 transform -translate-x-1/2 text-2xl font-medium">
-      Anne Couverture
-    </a>
-
-    <!-- Menu -->
-    <nav class="space-x-6 hidden md:flex">
-      <a href="#about" class="hover:text-yellow-400 transition">À propos</a>
-      <a href="#creations" class="hover:text-yellow-400 transition">Créations</a>
-      <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
-      <a href="/devis" class="hover:text-yellow-400 transition">Devis</a>
-    </nav>
+    // Format YYYY-MM-DDTHH:MM
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
     
-    <!-- Burger mobile -->
-    <div class="md:hidden">
-      <button id="menuBtn" class="focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-</header>
+    const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+    
+    const appointmentInput = document.querySelector('input[name="appointment"]');
+    if (appointmentInput) {
+        appointmentInput.min = minDateTime;
+    }
+}
+
+// Mettre à jour le min au chargement de la pagex
+document.addEventListener('DOMContentLoaded', function() {
+    updateMinDateTime();
+});
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+@section('content')
 
 <!-- Hero Section -->
 <section class="h-screen bg-cover bg-center" style=" background-image: url(/images/couvreurs2.jpg);background-repeat:no-repeat; background-position:center center; background-attachment : fixed ">
@@ -95,11 +103,24 @@
     </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6 md:px-0 max-w-3xl">
-        <h2 class="text-3xl font-bold text-center mb-8">Contactez-nous</h2>
-       <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-white shadow-md rounded">
+<!-- Formulaire Contact -->
+<section id="contact">
+    <br><br><br>
+    <div class="max-w-lg mx-auto border rounded-lg p-6">
+        <h1 class="text-xl font-bold mb-4">Prise de Contact & Rendez-vous</h1>
+
+        @if(session('success'))
+            <div class="bg-green-100 border-green-400 text-green-700 px-4 py-3 rounded " role="alert">
+                <div class="flex items-center">
+                    <!-- <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg> -->
+                    <span class="font-medium">{{ session('success') }}</span>
+                </div>
+            </div>
+        @endif
+
+        <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-white shadow-md rounded">
             @csrf
             <div>
                 <label for="nom" class="block font-medium">Nom</label>
@@ -170,10 +191,7 @@
             </button>
         </form>
         
-    <a href="/devis" class="m-5 text-2xl text-center">->Un devis ?</a>
-
     </div>
-
 </section>
 
 <!-- Devis -->
@@ -202,22 +220,8 @@
     </div>
 </section> -->
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-6 mt-12">
-    <div class="container mx-auto px-6 text-center">
-        © 2025 Anne Couverture - Tous droits réservés
-    </div>
-</footer>
-
-<script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-</script>
 
 </body>
 </html>
+
+@endsection
