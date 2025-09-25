@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devis;
+use App\Mail\DevisConfirmation;
+use App\Mail\DevisNotification;
 use Illuminate\Http\Request;
-
- use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class DevisController extends Controller
 {
-    public function create()
-    {
-        return view('devis.create');
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -26,12 +22,26 @@ class DevisController extends Controller
             'societe'=> 'nullable|string|max:255',
         ]);
 
-        Devis::create($validated);
+        $devis = Devis::create($validated);
 
-        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
+        try {
+            // 1. Email de confirmation à la personne qui a fait la demande
+            Mail::to($devis->email)->send(new DevisConfirmation($devis));
+            
+            // 2. Email de notification pour moi
+            Mail::to(config('mail.from.address'))->send(new DevisNotification($devis));
+            
+        } catch (\Exception $e) {
+            \Log::error('Erreur envoi email devis: ' . $e->getMessage());
+        }
+
+        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Vous allez recevoir une confirmation par email.');
     }
 
-    public function index()
+//transferer tout ca
+//
+
+ public function index()
     {
         // Récupère tous les devis avec pagination (10 par page)
         $devis = Devis::latest()->paginate(10);
@@ -64,6 +74,7 @@ public function generatePdf($id)
 
     return $pdf->download('devis_' . $devis->nom . '_' . $devis->prenom . '.pdf');
 }
+
 
 
 }

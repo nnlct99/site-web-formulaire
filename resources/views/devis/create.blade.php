@@ -14,8 +14,9 @@ function invisible(){
 
 @section('content')
 <!-- <img src="/couvreurs1.jpg"> -->
-<div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
-    <h1 class="text-xl font-bold mb-4">Demande de devis</h1>
+ <br><br><br>
+<div class="max-w-lg mx-auto bg-white border rounded-lg p-6">
+    <h1 class="text-xl font-bold">Demande de devis</h1><br>
 
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
@@ -26,32 +27,32 @@ function invisible(){
     <form action="{{ route('devis.store') }}" method="POST" class="space-y-4">
         @csrf
         <div>
-            <label class="shadow-md font-medium">Nom</label>
-            <input type="text" name="nom" value="{{ old('nom') }}" class="w-full border rounded p-2" required>
+            <label class="block font-medium">Nom</label> <!--block?-->
+            <input type="text" name="nom" value="{{ old('nom') }}" class="w-full shadow-md rounded p-2" required>
             @error('nom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
-            <label class="shadow-md font-medium">Prénom</label>
-            <input type="text" name="prenom" value="{{ old('prenom') }}" class="w-full border rounded p-2" required>
+            <label class="block font-medium">Prénom</label>
+            <input type="text" name="prenom" value="{{ old('prenom') }}" class="w-full shadow-md rounded p-2" required>
             @error('prenom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Téléphone</label>
-            <input type="text" name="telephone" value="{{ old('telephone') }}" class="w-full border rounded p-2" required>
+            <input type="text" name="telephone" value="{{ old('telephone') }}" class="w-full shadow-md rounded p-2" required>
             @error('telephone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded p-2" required>
+            <input type="email" name="email" value="{{ old('email') }}" class="w-full shadow-md rounded p-2" required>
             @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label for ="motif" class="block font-medium">Motif</label>
-            <select name="motif" id="motif-select" class="rounded border">
+            <select name="motif" id="motif-select" class="rounded shadow-md">
                 
                 <option value="motif1">motif1</option>
                 <option value="motif2">motif2</option>
@@ -70,17 +71,17 @@ function invisible(){
 
         <div style="display: none;" id="d">
             <label class="block font-medium">Société</label>
-            <input type="text" name="societe" value="{{ old('societe') }}" class="w-full border rounded p-2">
+            <input type="text" name="societe" value="{{ old('societe') }}" class="w-full shadow-md rounded p-2">
             @error('societe') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block font-medium">Message</label>
-            <textarea name="message" rows="5" class="w-full border rounded p-2" required>{{ old('message') }}</textarea>
+            <textarea name="message" rows="5" class="w-full shadow-md rounded p-2" required>{{ old('message') }}</textarea> <!--dark:border?-->
             @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
 
-         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded border hover:bg-blue-700 hover:cursor-pointer transition-colors duration-200">
+         <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded font-bold hover:bg-yellow-500 hover:cursor-pointer transition-colors duration-200">
             Envoyer
         </button>
     </form>

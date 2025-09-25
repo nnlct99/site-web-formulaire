@@ -11,33 +11,37 @@
 </head>
 <body>
 
-   <header class="bg-gray-900 text-white fixed w-full z-50 shadow">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-        <a href="#" class="text-2xl font-bold">Anne Couverture</a>
-        <nav class="space-x-6 hidden md:flex">
-            <a href="#about" class="hover:text-yellow-400 transition">À propos</a>
-            <a href="#creations" class="hover:text-yellow-400 transition">Créations</a>
-            <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
-            <a href="#devis" class="hover:text-yellow-400 transition">Devis</a>
-        </nav>
-        <!-- Mobile burger -->
-        <div class="md:hidden">
-            <button id="menuBtn" class="focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                          d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
+ <header class="bg-gray-900 text-white fixed w-full z-50 shadow">
+  <div class="relative container mx-auto flex items-center justify-between py-4 px-6">
+    
+    <!-- Logo -->
+    <a href="/"><img src="{{ asset('images/logo1.png')}}" class="h-8" alt="Logo" /></a>
+
+    <!-- Titre centré -->
+    <a href="/" class="absolute left-1/2 transform -translate-x-1/2 text-2xl font-medium">
+      Anne Couverture
+    </a>
+
+    <!-- Menu -->
+    <nav class="space-x-6 hidden md:flex">
+      <a href="#about" class="hover:text-yellow-400 transition">À propos</a>
+      <a href="#creations" class="hover:text-yellow-400 transition">Créations</a>
+      <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+      <a href="/devis" class="hover:text-yellow-400 transition">Devis</a>
+    </nav>
+    
+    <!-- Burger mobile -->
+    <div class="md:hidden">
+      <button id="menuBtn" class="focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
-        <a href="#about" class="block py-2 px-6 hover:bg-gray-700">À propos</a>
-        <a href="#creations" class="block py-2 px-6 hover:bg-gray-700">Créations</a>
-        <a href="#contact" class="block py-2 px-6 hover:bg-gray-700">Contact</a>
-        <a href="#devis" class="block py-2 px-6 hover:bg-gray-700">Devis</a>
-    </div>
+  </div>
 </header>
+
 
 @yield('content')
 
