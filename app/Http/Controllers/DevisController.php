@@ -3,17 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devis;
+use App\Mail\DevisConfirmation;
+use App\Mail\DevisNotification;
 use Illuminate\Http\Request;
-
- use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class DevisController extends Controller
 {
-    public function create()
-    {
-        return view('devis.create');
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -26,19 +22,21 @@ class DevisController extends Controller
             'societe'=> 'nullable|string|max:255',
         ]);
 
-        Devis::create($validated);
+        $devis = Devis::create($validated);
 
-        // Envoyer l'email
         try {
-            Mail::to(config('mail.from.address'))->send(new DevisReceived($devis));
+            // 1. Email de confirmation à la personne qui a fait la demande
+            Mail::to($devis->email)->send(new DevisConfirmation($devis));
+            
+            // 2. Email de notification pour moi
+            Mail::to(config('mail.from.address'))->send(new DevisNotification($devis));
+            
         } catch (\Exception $e) {
-            // Log l'erreur mais ne pas faire échouer la création du devis
             \Log::error('Erreur envoi email devis: ' . $e->getMessage());
         }
 
-        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
+        return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Vous allez recevoir une confirmation par email.');
     }
-    
 
 //transferer tout ca
 //
