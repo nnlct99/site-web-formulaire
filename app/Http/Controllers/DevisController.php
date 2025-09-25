@@ -7,9 +7,16 @@ use App\Mail\DevisConfirmation;
 use App\Mail\DevisNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade\Pdf;
 
-class DevisController extends Controller
-{
+class DevisController extends Controller{
+
+    public function create()
+    {
+        return view('devis.create');
+    }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
