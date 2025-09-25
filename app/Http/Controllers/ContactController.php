@@ -13,7 +13,7 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
-    public function store(Request $request)
+       public function store(Request $request)
     {
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
@@ -39,7 +39,15 @@ class ContactController extends Controller
                 ->withErrors(['appointment' => 'Veuillez sélectionner une date et heure pour votre rendez-vous.']);
         }
 
-        Contact::create($validated);
+        $contact = Contact::create($validated);
+
+        // Envoyer l'email
+        try {
+            Mail::to(config('mail.from.address'))->send(new ContactReceived($contact));
+        } catch (\Exception $e) {
+            // Log l'erreur mais ne pas faire échouer la création du contact
+            \Log::error('Erreur envoi email contact: ' . $e->getMessage());
+        }
 
         // Message de confirmation différent selon qu'il y ait un rendez-vous ou non
         if (!empty($validated['appointment'])) {

@@ -39,3 +39,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 
 Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+
+
+Route::get('/devis-received', [Devis::class, 'create'])->name('contact.form');  

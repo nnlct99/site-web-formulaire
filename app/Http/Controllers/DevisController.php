@@ -28,13 +28,22 @@ class DevisController extends Controller
 
         Devis::create($validated);
 
+        // Envoyer l'email
+        try {
+            Mail::to(config('mail.from.address'))->send(new DevisReceived($devis));
+        } catch (\Exception $e) {
+            // Log l'erreur mais ne pas faire échouer la création du devis
+            \Log::error('Erreur envoi email devis: ' . $e->getMessage());
+        }
+
         return redirect()->back()->with('success', '✅ Votre demande de devis a bien été envoyée. Nous vous recontacterons rapidement.');
     }
+    
 
 //transferer tout ca
 //
 
-    public function index()
+ public function index()
     {
         // Récupère tous les devis avec pagination (10 par page)
         $devis = Devis::latest()->paginate(10);
@@ -67,6 +76,7 @@ public function generatePdf($id)
 
     return $pdf->download('devis_' . $devis->nom . '_' . $devis->prenom . '.pdf');
 }
+
 
 
 }
