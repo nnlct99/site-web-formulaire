@@ -4,7 +4,7 @@
 <div class="container mx-auto px-4">
 
 
-    <h1 class="text-2xl font-bold mb-6">📊 Tableau de bord - Liste des devis</h1>
+    <h1 class="text-2xl font-bold pt-30 mb-5">📊 Tableau de bord - Liste des devis</h1>
 
     @if($devis->isEmpty())
         <div class="p-6 bg-yellow-50 border border-yellow-200 rounded-lg">

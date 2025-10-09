@@ -11,11 +11,11 @@
 </head>
 <body>
 
- <header class="bg-gray-900 text-white fixed w-full z-50 shadow">
+ <header class="bg-white text-black fixed w-full z-50 shadow "> <!--opacity-80-->
   <div class="relative container mx-auto flex items-center justify-between py-4 px-6">
     
     <!-- Logo -->
-    <a href="/"><img src="{{ asset('images/logo1.png')}}" class="h-8" alt="Logo" /></a>
+    <a href="/"><img src="{{ asset('images/logo-entreprise.jpg')}}" class="h-15" alt="Logo" /></a>
 
     <!-- Titre centré -->
     <a href="/" class="absolute left-1/2 transform -translate-x-1/2 text-2xl font-medium">
@@ -24,10 +24,10 @@
 
     <!-- Menu -->
     <nav class="space-x-6 hidden md:flex">
-      <a href="#about" class="hover:text-yellow-400 transition">À propos</a>
-      <a href="#creations" class="hover:text-yellow-400 transition">Créations</a>
-      <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
-      <a href="/devis" class="hover:text-yellow-400 transition">Devis</a>
+      <a href="#services" class="hover:text-blue-400 transition">Nos services</a>
+      <a href="/realisations" class="hover:text-blue-400 transition">Réalisations</a>
+      <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+      <a href="/devis" class="hover:text-blue-400 transition">Devis</a>
     </nav>
     
     <!-- Burger mobile -->
@@ -45,12 +45,12 @@
 
 @yield('content')
 
-<footer class="bg-white dark:bg-gray-900 mt-5">
+<footer class="bg-white dark:bg-gray-800 mt-5">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="#" class="hover:underline">Anne Couverture</a>. Tout droits reservés <!-- ? -->
+      <span class="text-sm text-white sm:text-center dark:text-white">© 2025 <a href="#" class="hover:underline">Anne Couverture</a>. Tout droits reservés <!-- ? -->
     </span>
     <!-- A checker .... -->
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white dark:text-white sm:mt-0">
         <li>
             <a href="#" class="hover:underline me-4 md:me-6">A propos</a>
         </li>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto px-4">
-    <h1 class="text-2xl font-bold mb-6">📩 Messages reçus (Contact)</h1>
+    <h1 class="text-2xl font-bold pt-30 mb-6">📩 Messages reçus (Contact)</h1>
 
     @if($contacts->isEmpty())
         <div class="p-6 bg-blue-50 border border-blue-200 rounded-lg">

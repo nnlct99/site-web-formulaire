@@ -59,9 +59,9 @@ Route::middleware(['auth'])->group(function () {
 //     return view('pages.about');
 // })->name('about');
 
-// Route::get('/creations', function () {
-//     return view('pages.creations');
-// })->name('creations');
+Route::get('/realisations', function () {
+    return view('pages.realisations');
+})->name('realisations');
 
 // Route::get('/services', function () {
 //     return view('pages.services');

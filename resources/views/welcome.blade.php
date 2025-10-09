@@ -46,6 +46,63 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 </script>
 
+<script>
+let currentSlide = 0;
+const totalSlides = 3;
+let autoSlideInterval;
+
+function updateCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+            indicator.classList.remove('bg-gray-300');
+            indicator.classList.add('bg-blue-400');
+        } else {
+            indicator.classList.remove('bg-blue-400');
+            indicator.classList.add('bg-gray-300');
+        }
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+    resetAutoSlide();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+    resetAutoSlide();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+    resetAutoSlide();
+}
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        nextSlide();
+    }, 5000);
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+}
+
+// Démarrer le carrousel automatique au chargement
+document.addEventListener('DOMContentLoaded', () => {
+    startAutoSlide();
+});
+</script>
+
 @section('content')
 
 <!-- Hero Section -->
@@ -55,58 +112,160 @@ document.addEventListener('DOMContentLoaded', function() {
        
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Anne Couverture</h1>
         <p class="text-white text-lg md:text-2xl mb-6">Votre toiture, notre expertise</p>
-        <a href="#devis" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded shadow">Demander un devis</a>
+        <a href="/devis" class="bg-blue-400 hover:bg-blue-500 text-gray-900 transition-colors duration-200 font-medium py-2 px-4 rounded shadow">Demander un devis</a>
     </div>
 </section>
 
 <!-- À propos -->
 <section id="about" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-0">
-        <h2 class="text-3xl font-bold text-center mb-8">À propos</h2>
+        <h2 class="text-3xl font-bold text-center text-gray-700 mb-8">À propos</h2>
         <p class="max-w-3xl mx-auto text-center text-gray-700 leading-relaxed">
-            Forts de 20 ans d'expérience, nous sommes spécialisés dans tous types de travaux de couverture.
-            Toitures, ardoises, tuiles ou zinc : nous garantissons un travail soigné et durable.
+            Forts de 17 ans d'expérience, nous sommes spécialisés dans tous types de travaux de couverture.<br>
+            Toitures, charpentes, zinguerie, démoussage et pose de velux etc ... <br>
+            Nous garantissons un travail soigné et durable.
         </p>
     </div>
 </section>
 
-<!-- Créations -->
-<section id="creations" class="py-20">
+<!-- Services -->
+
+<!--Neuf
+- Réparation
+- Rénovation
+- Charpente
+- Couverture
+- Pose de Velux
+- Zinguerie
+- Démoussage
+
+-->
+
+<!-- Section Carrousel des Services -->
+<section id="services" class="py-20">
     <div class="container mx-auto px-6 md:px-0">
-        <h2 class="text-3xl font-bold text-center mb-12">Nos réalisations</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
-                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 1" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2">Toiture traditionnelle</h3>
-                    <p class="text-gray-700 text-sm">Rénovation d’une toiture en tuiles avec isolation complète.</p>
-                    <a class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5" href="/devis">Demander un devis</a>
+        <h2 class="text-3xl font-bold text-center mb-12">Nos services</h2>
+        
+        <!-- Carrousel Container -->
+        <div class="relative">
+            <!-- Carrousel Track -->
+            <div class="overflow-hidden">
+                <div id="carouselTrack" class="flex transition-transform duration-500 ease-in-out">
+                    
+                    <!-- Slide 1 : Neuf, Réparation, Rénovation -->
+                    <div class="w-full flex-shrink-0">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 1" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Neuf</h3>
+                                    <p class="text-gray-700 text-sm">Construction de toitures neuves avec matériaux de qualité.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 2" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Réparation</h3>
+                                    <p class="text-gray-700 text-sm">Intervention rapide pour tous types de réparations.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 3" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Rénovation</h3>
+                                    <p class="text-gray-700 text-sm">Rénovation complète de toiture avec isolation.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 : Charpente, Couverture, Pose de Velux -->
+                    <div class="w-full flex-shrink-0">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 4" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Charpente</h3>
+                                    <p class="text-gray-700 text-sm">Création et rénovation de charpentes traditionnelles.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 5" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Couverture</h3>
+                                    <p class="text-gray-700 text-sm">Installation de tuiles, ardoises et zinc.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 6" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Pose de Velux</h3>
+                                    <p class="text-gray-700 text-sm">Installation de fenêtres de toit pour plus de lumière.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 : Zinguerie, Démoussage -->
+                    <div class="w-full flex-shrink-0">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 7" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Zinguerie</h3>
+                                    <p class="text-gray-700 text-sm">Gouttières, chéneaux et évacuation des eaux.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
+                                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 8" class="w-full h-64 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-2">Démoussage</h3>
+                                    <p class="text-gray-700 text-sm">Nettoyage et traitement de votre toiture.</p>
+                                    <a class="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5 cursor-pointer" href="/devis">Demander un devis</a>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition opacity-0 pointer-events-none">
+                                <!-- Card vide pour maintenir l'alignement -->
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
-                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 2" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2">Toiture traditionnelle</h3>
-                    <p class="text-gray-700 text-sm">Rénovation d’une toiture en tuiles avec isolation complète.</p>
-                    <a class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5" href="/devis">Demander un devis</a>
-                </div>
-            </div>
-            <div class="overflow-hidden rounded shadow-lg hover:scale-105 transition">
-                <img src="{{URL::asset('/images/couvreurs1.jpg')}}" alt="Toiture 3" class="w-full h-64 object-cover">
-                <div class="p-4">
-                    <h3 class="font-bold text-lg mb-2">Toiture traditionnelle</h3>
-                    <p class="text-gray-700 text-sm">Rénovation d’une toiture en tuiles avec isolation complète.</p>
-                    <a class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-medium py-3 px-6 rounded shadow flex justify-center mt-5" href="/devis">Demander un devis</a>
-                </div>
+
+            <!-- Flèches de navigation -->
+            <button onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 cursor-pointer bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition z-10">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 cursor-pointer bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition z-10">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Indicateurs -->
+            <div class="flex justify-center mt-8 space-x-2">
+                <button onclick="goToSlide(0)" class="indicator w-3 h-3 rounded-full bg-blue-400 transition cursor-pointer"></button>
+                <button onclick="goToSlide(1)" class="indicator w-3 h-3 rounded-full bg-gray-300 transition cursor-pointer"></button>
+                <button onclick="goToSlide(2)" class="indicator w-3 h-3 rounded-full bg-gray-300 transition cursor-pointer"></button>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Formulaire Contact -->
-<section id="contact">
+<section id="contact" class="bg-gray-50">
     <br><br><br>
-    <div class="max-w-lg mx-auto border rounded-lg p-6">
+    <div class="max-w-lg mx-auto bg-gray-50 rounded-lg p-6">
         <h1 class="text-xl font-bold mb-4">Prise de Contact & Rendez-vous</h1>
 
         @if(session('success'))
@@ -120,41 +279,41 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         @endif
 
-        <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-white shadow-md rounded">
+        <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-gray-50 rounded">
             @csrf
             <div>
                 <label for="nom" class="block font-medium">Nom</label>
-                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="w-full border-1 border-gray-600 rounded p-2" required>
                 @error('nom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="prenom" class="block font-medium">Prénom</label>
-                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="w-full border-1 border-gray-600 rounded p-2" required>
                 @error('prenom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="email" class="block font-medium">E-mail</label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full border-1 border-gray-600 rounded p-2" required>
                 @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="telephone" class="block font-medium">Téléphone</label>
-                <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}" class="w-full shadow-md rounded p-2">
+                <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}" class="w-full border-1 border-gray-600 rounded p-2">
                 @error('telephone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="objet" class="block font-medium">Objet</label>
-                <input type="text" name="objet" id="objet" value="{{ old('objet') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="objet" id="objet" value="{{ old('objet') }}" class="w-full border-1 border-gray-600 rounded p-2" required>
                 @error('objet') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="message" class="block font-medium">Message</label>
-                <textarea name="message" id="message" rows="4" class="w-full shadow-md rounded p-2" required>{{ old('message') }}</textarea>
+                <textarea name="message" id="message" rows="4" class="w-full border-1 border-gray-600 rounded p-2" required>{{ old('message') }}</textarea>
                 @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
@@ -179,19 +338,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     name="appointment" 
                     id="appointment"
                     value="{{ old('appointment') }}"
-                    class="w-full shadow-md rounded p-2"
+                    class="w-full border-1 border-gray-600 rounded p-2"
                     min="{{ now()->addHour()->format('Y-m-d\TH:i') }}"
                 >
                 @error('appointment') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
                 <small class="text-gray-600 text-sm">Veuillez sélectionner une date et heure futures (minimum 1h à l'avance)</small>
             </div>
 
-            <button type="submit" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded shadow-md hover:bg-yellow-500 hover:cursor-pointer transition-colors duration-200">
+            <button type="submit" class="bg-blue-400 text-black font-bold px-4 py-2 rounded shadow-md hover:bg-blue-500 hover:cursor-pointer transition-colors duration-200">
                 Envoyer
             </button>
         </form>
         
     </div>
+    <br><br>
 </section>
 
 <!-- Devis -->
