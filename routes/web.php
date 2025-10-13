@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\RealisationController;
+
 
 // Page d'accueil
 Route::get('/', function () {
@@ -22,7 +24,12 @@ Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+});
 
+
+
+
+Route::get('/realisations', [RealisationController::class, 'index'])->name('realisations.index');
 
 
 // ----------------- DEVIS -----------------
@@ -75,9 +82,6 @@ Route::middleware(['auth'])->group(function () {
 //     return view('pages.about');
 // })->name('about');
 
-Route::get('/realisations', function () {
-    return view('pages.realisations');
-})->name('realisations');
 
 // Route::get('/services', function () {
 //     return view('pages.services');
