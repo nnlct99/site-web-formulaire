@@ -4,10 +4,33 @@ use App\Http\Controllers\DevisController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+
+use App\Http\Controllers\RealisationController;
+
+
 // Page d'accueil
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route de login (accessible à tous)
+Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.login');
+Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login.submit');
+
+// Routes protégées par le middleware admin
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+});
+
+
+
+
+Route::get('/realisations', [RealisationController::class, 'index'])->name('realisations.index');
+
 
 // ----------------- DEVIS -----------------
 
@@ -59,9 +82,6 @@ Route::middleware(['auth'])->group(function () {
 //     return view('pages.about');
 // })->name('about');
 
-// Route::get('/creations', function () {
-//     return view('pages.creations');
-// })->name('creations');
 
 // Route::get('/services', function () {
 //     return view('pages.services');
