@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 </script>
 
+<!--swiper js
+maconery-->
+
 <script>
 let currentSlide = 0;
 const totalSlides = 3;
@@ -117,10 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 
 <!-- À propos -->
-<section id="about" class="py-20 bg-gray-50">
+<section id="about" class="py-20 bg-gray-300">
     <div class="container mx-auto px-6 md:px-0">
-        <h2 class="text-3xl font-bold text-center text-gray-700 mb-8">À propos</h2>
-        <p class="max-w-3xl mx-auto text-center text-gray-700 leading-relaxed">
+        <h2 class="text-3xl font-bold text-center text-black mb-8">À propos</h2>
+        <p class="max-w-3xl mx-auto text-center text-black leading-relaxed">
             Forts de 17 ans d'expérience, nous sommes spécialisés dans tous types de travaux de couverture.<br>
             Toitures, charpentes, zinguerie, démoussage et pose de velux etc ... <br>
             Nous garantissons un travail soigné et durable.
@@ -262,6 +265,23 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
+<!--carte ici ??-->
+
+<section>
+<div style="width: 100%; height: 400px; border: none;">
+    <iframe
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border:0; border-radius: 12px;"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=7bis,+rue+de+la+Klaize,+14480+Banville,+France&output=embed"
+        allowfullscreen>
+    </iframe>
+</div>
+</section>
+
+
 <!-- Formulaire Contact -->
 <section id="contact" class="bg-gray-50">
     <br><br><br>
@@ -354,31 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <br><br>
 </section>
 
-<!-- Devis -->
-<!-- <section id="devis" class="py-20">
-    <div class="container mx-auto px-6 md:px-0 max-w-3xl">
-        <h2 class="text-3xl font-bold text-center mb-8">Demandez un devis</h2>
-        <form class="bg-white shadow-md rounded px-8 py-10 space-y-6">
-            <div>
-                <label class="block text-gray-700 font-bold mb-2">Nom</label>
-                <input type="text" placeholder="Votre nom" class="w-full border rounded px-3 py-2">
-            </div>
-            <div>
-                <label class="block text-gray-700 font-bold mb-2">Email</label>
-                <input type="email" placeholder="Votre email" class="w-full border rounded px-3 py-2">
-            </div>
-            <div>
-                <label class="block text-gray-700 font-bold mb-2">Téléphone</label>
-                <input type="tel" placeholder="Votre téléphone" class="w-full border rounded px-3 py-2">
-            </div>
-            <div>
-                <label class="block text-gray-700 font-bold mb-2">Message / détails du projet</label>
-                <textarea placeholder="Votre projet" class="w-full border rounded px-3 py-2 h-32"></textarea>
-            </div>
-            <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded shadow">Envoyer le devis</button>
-        </form>
-    </div>
-</section> -->
 
 
 </body>
