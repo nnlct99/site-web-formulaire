@@ -50,7 +50,7 @@
       <span class="text-sm text-white sm:text-center dark:text-white">© 2025 <a href="#" class="hover:underline">Anne Couverture</a>. Tout droits reservés <!-- ? -->
     </span>
     <!-- A checker .... -->
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-white dark:text-white sm:mt-0">
+    <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-white sm:mt-0">
         <li>
             <a href="#" class="hover:underline me-4 md:me-6">A propos</a>
         </li>
