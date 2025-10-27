@@ -4,9 +4,10 @@
 
 @section('content')
 <div class="container mx-auto px-6 py-12">
-    <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Nos Réalisations</h1>
-
+   
+<h1 class="text-3xl font-medium text-left mt-20 mb-20 text-gray-800">Nos Réalisations</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        
         @foreach($realisations as $realisation)
             <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <a href="{{ asset('images/realisations/' . $realisation->image) }}" data-lightbox="realisations" data-title="{{ $realisation->titre }}">
