@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 @section('content')
 <section>
     <br><br><br>
-    <div class="max-w-lg mx-auto border rounded-lg p-6">
+    <div class="max-w-lg mx-auto rounded-lg mt-5 p-6">
         <h1 class="text-xl font-bold mb-4">Prise de Contact & Rendez-vous</h1>
 
         @if(session('success'))
@@ -55,41 +55,41 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         @endif
 
-        <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-white shadow-md rounded">
+        <form action="{{ route('contact.store') }}" method="POST" class="space-y-4 bg-white rounded">
             @csrf
             <div>
                 <label for="nom" class="block font-medium">Nom</label>
-                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="w-full border rounded p-2" required>
                 @error('nom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="prenom" class="block font-medium">Prénom</label>
-                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="w-full border rounded p-2" required>
                 @error('prenom') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="email" class="block font-medium">E-mail</label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full border rounded p-2" required>
                 @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="telephone" class="block font-medium">Téléphone</label>
-                <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}" class="w-full shadow-md rounded p-2">
+                <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}" class="w-full border rounded p-2">
                 @error('telephone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="objet" class="block font-medium">Objet</label>
-                <input type="text" name="objet" id="objet" value="{{ old('objet') }}" class="w-full shadow-md rounded p-2" required>
+                <input type="text" name="objet" id="objet" value="{{ old('objet') }}" class="w-full border rounded p-2" required>
                 @error('objet') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="message" class="block font-medium">Message</label>
-                <textarea name="message" id="message" rows="4" class="w-full shadow-md rounded p-2" required>{{ old('message') }}</textarea>
+                <textarea name="message" id="message" rows="4" class="w-full border rounded p-2" required>{{ old('message') }}</textarea>
                 @error('message') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
             </div>
 
@@ -114,14 +114,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     name="appointment" 
                     id="appointment"
                     value="{{ old('appointment') }}"
-                    class="w-full shadow-md rounded p-2"
+                    class="w-full border rounded p-2"
                     min="{{ now()->addHour()->format('Y-m-d\TH:i') }}"
                 >
                 @error('appointment') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
                 <small class="text-gray-600 text-sm">Veuillez sélectionner une date et heure futures (minimum 1h à l'avance)</small>
             </div>
 
-            <button type="submit" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded shadow-md hover:bg-yellow-500 hover:cursor-pointer transition-colors duration-200">
+            <button type="submit" class="bg-blue-400 text-black font-bold px-4 py-2 rounded shadow-md hover:bg-blue-500 hover:cursor-pointer transition-colors duration-200">
                 Envoyer
             </button>
         </form>
